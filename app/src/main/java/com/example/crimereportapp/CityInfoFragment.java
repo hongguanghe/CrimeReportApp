@@ -7,11 +7,13 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentContainerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
@@ -52,9 +54,8 @@ import java.util.Random;
 public class CityInfoFragment extends Fragment  {
 
     // TODO: Rename parameter arguments, choose names that match
-    private MapView mapView;
     private int zipcode = 84604;
-    private LinearLayout mapsFragLayout;
+    private FragmentContainerView cornerLayout;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -84,9 +85,8 @@ public class CityInfoFragment extends Fragment  {
 
         AnyChartView anyChartView = view.findViewById(R.id.trend_chart);
         anyChartView.setProgressBar(view.findViewById(R.id.trend_progress_bar));
-        mapsFragLayout = view.findViewById(R.id.mapsFragLayout);
-        mapsFragLayout.setClipToOutline(true);
-
+        cornerLayout = view.findViewById(R.id.fragmentContainerView);
+        cornerLayout.setClipToOutline(true);
 
         Cartesian cartesian = AnyChart.column();
 
