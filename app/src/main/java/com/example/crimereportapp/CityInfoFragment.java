@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
@@ -48,12 +49,12 @@ import java.util.Random;
  * Use the {@link CityInfoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CityInfoFragment extends Fragment implements OnMapReadyCallback {
+public class CityInfoFragment extends Fragment  {
 
     // TODO: Rename parameter arguments, choose names that match
-    private GoogleMap mMap;
     private MapView mapView;
     private int zipcode = 84604;
+    private LinearLayout mapsFragLayout;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -83,9 +84,9 @@ public class CityInfoFragment extends Fragment implements OnMapReadyCallback {
 
         AnyChartView anyChartView = view.findViewById(R.id.trend_chart);
         anyChartView.setProgressBar(view.findViewById(R.id.trend_progress_bar));
-        mapView = view.findViewById(R.id.mapView);
-        mapView.onCreate(savedInstanceState);
-        mapView.getMapAsync(this);
+        mapsFragLayout = view.findViewById(R.id.mapsFragLayout);
+        mapsFragLayout.setClipToOutline(true);
+
 
         Cartesian cartesian = AnyChart.column();
 
@@ -126,27 +127,4 @@ public class CityInfoFragment extends Fragment implements OnMapReadyCallback {
         return new Random().nextInt(1000000);
     }
 
-    @Override
-    public void onMapReady(@NonNull GoogleMap googleMap) {
-        mMap = googleMap;
-        Geocoder geocoder = new Geocoder(getActivity());
-        List<Address> addresses = new ArrayList<>();
-        try {
-            addresses = geocoder.getFromLocationName("84604", 1);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        double latitude = 0.0;
-        double longitude = 0.0;
-        if (addresses.size() != 0 ) {
-            latitude = addresses.get(0).getLatitude();
-            longitude = addresses.get(0).getLongitude();
-        }
-        LatLng location = new LatLng(latitude, longitude);
-
-        mMap.addMarker(new MarkerOptions()
-                .position(location)
-                .title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
-    }
 }

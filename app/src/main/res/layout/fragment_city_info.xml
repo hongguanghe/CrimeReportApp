@@ -116,7 +116,9 @@
                 <com.anychart.AnyChartView
                     android:id="@+id/trend_chart"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" />
+                    android:layout_height="200dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp" />
 
                 <ProgressBar
                     android:id="@+id/trend_progress_bar"
@@ -168,11 +170,23 @@
 
             </LinearLayout>
 
-            <com.google.android.gms.maps.MapView
-                android:id="@+id/mapView"
+            <LinearLayout
+                android:id="@+id/mapsFragLayout"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_weight="1" />
+                android:layout_height="match_parent"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="100dp"
+                android:background="@drawable/round_background_map"
+                android:orientation="horizontal">
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/fragmentContainerView"
+                    android:name="com.example.crimereportapp.MapsFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 
