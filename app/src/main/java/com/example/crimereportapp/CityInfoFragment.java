@@ -111,8 +111,8 @@ public class CityInfoFragment extends Fragment  {
         cartesian.yScale().minimum(0d);
 
 
-//        cartesian.yAxis(0).labels().format("{%Value}{groupsSeparator: }");
-
+//        cartesian.yAxis(0).labels().format("{%Value / 100}{groupsSeparator: }");
+        cartesian.yAxis(false);
         cartesian.tooltip().positionMode(TooltipPositionMode.POINT);
         cartesian.interactivity().hoverMode(HoverMode.BY_X);
 
