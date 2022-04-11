@@ -1,13 +1,19 @@
 package com.example.crimereportapp;
 
 import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentContainerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
@@ -28,7 +34,14 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -38,12 +51,11 @@ import java.util.Random;
  * Use the {@link CityInfoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CityInfoFragment extends Fragment {
+public class CityInfoFragment extends Fragment  {
 
     // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private int zipcode = 84604;
+    private FragmentContainerView cornerLayout;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -53,21 +65,9 @@ public class CityInfoFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CityInfoFragment.
-     */
     // TODO: Rename and change types and number of parameters
     public static CityInfoFragment newInstance(String param1, String param2) {
         CityInfoFragment fragment = new CityInfoFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
@@ -83,47 +83,10 @@ public class CityInfoFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_city_info, container, false);
 
-
-//        LineChart chart = view.findViewById(R.id.barchart);
-
-//        ArrayList NoOfEmp = new ArrayList();
-//
-//        NoOfEmp.add(new Entry(945f, 0));
-//        NoOfEmp.add(new Entry(1040f, 1));
-//        NoOfEmp.add(new Entry(1133f, 2));
-//        NoOfEmp.add(new Entry(1240f, 3));
-//        NoOfEmp.add(new Entry(1369f, 4));
-//        NoOfEmp.add(new Entry(1487f, 5));
-//        NoOfEmp.add(new Entry(1501f, 6));
-//        NoOfEmp.add(new Entry(1645f, 7));
-//        NoOfEmp.add(new Entry(1578f, 8));
-//        NoOfEmp.add(new Entry(1695f, 9));
-//
-//        ArrayList year = new ArrayList();
-//
-//        year.add("2008");
-//        year.add("2009");
-//        year.add("2010");
-//        year.add("2011");
-//        year.add("2012");
-//        year.add("2013");
-//        year.add("2014");
-//        year.add("2015");
-//        year.add("2016");
-//        year.add("2017");
-//
-////        BarDataSet years = new BarDataSet()
-//
-//        LineData bardataset = new LineData(No, "No Of Employee");
-//        chart.animateY(5000);
-//        LineData data = new LineData(bardataset);
-//        bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
-//        ;
-//
-//        chart.setData();
-
         AnyChartView anyChartView = view.findViewById(R.id.trend_chart);
         anyChartView.setProgressBar(view.findViewById(R.id.trend_progress_bar));
+        cornerLayout = view.findViewById(R.id.fragmentContainerView);
+        cornerLayout.setClipToOutline(true);
 
         Cartesian cartesian = AnyChart.column();
 
@@ -148,8 +111,8 @@ public class CityInfoFragment extends Fragment {
         cartesian.yScale().minimum(0d);
 
 
-//        cartesian.yAxis(0).labels().format("{%Value}{groupsSeparator: }");
-
+//        cartesian.yAxis(0).labels().format("{%Value / 100}{groupsSeparator: }");
+        cartesian.yAxis(false);
         cartesian.tooltip().positionMode(TooltipPositionMode.POINT);
         cartesian.interactivity().hoverMode(HoverMode.BY_X);
 
@@ -161,6 +124,7 @@ public class CityInfoFragment extends Fragment {
     }
 
     private int randomCrimeNumber() {
-        return new Random().nextInt(1000000);
+        return new Random().nextInt(500000 - 100000) + 100000;
     }
+
 }
