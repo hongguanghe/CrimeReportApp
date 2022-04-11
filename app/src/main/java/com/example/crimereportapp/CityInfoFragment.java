@@ -124,7 +124,7 @@ public class CityInfoFragment extends Fragment  {
     }
 
     private int randomCrimeNumber() {
-        return new Random().nextInt(1000000);
+        return new Random().nextInt(500000 - 100000) + 100000;
     }
 
 }
