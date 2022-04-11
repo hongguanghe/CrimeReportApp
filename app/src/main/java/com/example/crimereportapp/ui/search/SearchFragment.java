@@ -22,7 +22,7 @@ public class SearchFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
-        TextView sample = view.findViewById(R.id.text_home);
+        /*TextView sample = view.findViewById(R.id.text_home);
         sample.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -30,7 +30,7 @@ public class SearchFragment extends Fragment {
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.nav_host_fragment_activity_main, cif).commit();
             }
-        });
+        });*/
 
         return view;
 //        return root;
