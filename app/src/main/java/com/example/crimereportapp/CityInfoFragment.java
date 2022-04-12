@@ -15,14 +15,20 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.anychart.APIlib;
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
 import com.anychart.chart.common.dataentry.DataEntry;
 import com.anychart.chart.common.dataentry.ValueDataEntry;
+import com.anychart.chart.common.listener.Event;
+import com.anychart.chart.common.listener.ListenersInterface;
 import com.anychart.charts.Cartesian;
+import com.anychart.charts.Pie;
 import com.anychart.core.cartesian.series.Column;
+import com.anychart.enums.Align;
 import com.anychart.enums.Anchor;
 import com.anychart.enums.HoverMode;
+import com.anychart.enums.LegendLayout;
 import com.anychart.enums.Position;
 import com.anychart.enums.TooltipPositionMode;
 import com.github.mikephil.charting.charts.BarChart;
@@ -84,7 +90,9 @@ public class CityInfoFragment extends Fragment  {
         View view = inflater.inflate(R.layout.fragment_city_info, container, false);
 
         AnyChartView anyChartView = view.findViewById(R.id.trend_chart);
-        anyChartView.setProgressBar(view.findViewById(R.id.trend_progress_bar));
+//        anyChartView.setProgressBar(view.findViewById(R.id.trend_progress_bar));
+        APIlib.getInstance().setActiveAnyChartView(anyChartView);
+
         cornerLayout = view.findViewById(R.id.fragmentContainerView);
         cornerLayout.setClipToOutline(true);
 
@@ -120,6 +128,49 @@ public class CityInfoFragment extends Fragment  {
 //        cartesian.yAxis(0).title("Revenue");
 
         anyChartView.setChart(cartesian);
+
+
+
+        AnyChartView summaryChart = view.findViewById(R.id.summary_chart);
+        anyChartView.setProgressBar(view.findViewById(R.id.summary_progress_bar));
+        APIlib.getInstance().setActiveAnyChartView(summaryChart);
+
+        Pie pie = AnyChart.pie();
+
+//        pie.setOnClickListener(new ListenersInterface.OnClickListener(new String[]{"x", "value"}) {
+//            @Override
+//            public void onClick(Event event) {
+//                Toast.makeText(PieChartActivity.this, event.getData().get("x") + ":" + event.getData().get("value"), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
+        List<DataEntry> summaryData = new ArrayList<>();
+        summaryData.add(new ValueDataEntry("Apples", 6371664));
+        summaryData.add(new ValueDataEntry("Pears", 789622));
+        summaryData.add(new ValueDataEntry("Bananas", 7216301));
+        summaryData.add(new ValueDataEntry("Grapes", 1486621));
+        summaryData.add(new ValueDataEntry("Oranges", 1200000));
+
+        pie.data(summaryData);
+
+//        pie.title("Fruits imported in 2015 (in kg)");
+
+        pie.labels().position("inside");
+        pie.legend().enabled(false);
+
+//        pie.legend().title().enabled(true);
+//        pie.legend().title()
+//                .text("Retail channels")
+//                .padding(0d, 0d, 10d, 0d);
+
+//        pie.legend()
+//                .position("center-bottom")
+//                .itemsLayout(LegendLayout.HORIZONTAL)
+//                .align(Align.CENTER);
+
+        summaryChart.setChart(pie);
+
+
         return view;
     }
 
