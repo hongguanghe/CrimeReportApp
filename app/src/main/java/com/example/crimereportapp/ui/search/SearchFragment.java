@@ -8,20 +8,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.ViewModelProvider;
 
+import com.example.crimereportapp.data.DataCache;
 import com.example.crimereportapp.CityInfoFragment;
 import com.example.crimereportapp.R;
-import com.example.crimereportapp.databinding.FragmentSearchBinding;
 
-public class SearchFragment extends Fragment {
+import java.util.List;
+
+public class SearchFragment extends Fragment implements SearchView.OnQueryTextListener {
 
 //    private FragmentSearchBinding binding;
 
@@ -52,6 +54,10 @@ public class SearchFragment extends Fragment {
             fm.beginTransaction().replace(R.id.nav_host_fragment_activity_main, cif).commit();
         });
 
+        SearchView searchView = view.findViewById(R.id.searchView);
+
+        searchView.setOnQueryTextListener(this);
+
         return view;
 
         /*TextView sample = view.findViewById(R.id.text_home);
@@ -71,5 +77,22 @@ public class SearchFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
 //        binding = null;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        List<String> searchResults = DataCache.get_instance().getSearchResults(query);
+
+        if (searchResults.size() > 0) {
+            Toast.makeText(getActivity(), searchResults.get(0), Toast.LENGTH_SHORT).show();
+            DataCache.get_instance().setCurrentCityName(searchResults.get(0));
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        return false;
     }
 }
