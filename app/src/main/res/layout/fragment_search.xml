@@ -52,12 +52,14 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/myCityImage"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:background="@drawable/provo"/>
+                    android:layout_height="100dp">
+                </ImageView>
 
                 <Button
-                    android:text="Provo"
+                    android:id="@+id/myCityButton"
+                    android:text="@string/myCityName"
                     android:textColor="@color/white"
                     android:textSize="50sp"
                     android:layout_width="match_parent"
@@ -74,11 +76,12 @@
             android:layout_marginTop="50dp">
 
             <Button
-                android:text="Go to current location"
+                android:id="@+id/currLocationButton"
+                android:text="@string/view_current_location"
                 android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="@color/black"/>
+                android:background="@drawable/round_background_map"/>
         </LinearLayout>
 
     </LinearLayout>

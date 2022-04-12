@@ -25,5 +25,7 @@
     <string name="location">Location</string>
     <string name="trend">Trend</string>
     <string name="summary">Summary</string>
+    <string name="myCityName">My City</string>
+    <string name="view_current_location">View Current Location</string>
 
 </resources>
