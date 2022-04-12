@@ -20,9 +20,12 @@
     <string name="title_notifications">Notifications</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="homeTitle">Home</string>
     <string name="google_maps_key">AIzaSyDJpBO_1K2ZP98qXsxGQHfoYZana85IFw8</string>
     <string name="location">Location</string>
     <string name="trend">Trend</string>
     <string name="summary">Summary</string>
+    <string name="myCityName">My City</string>
+    <string name="view_current_location">View Current Location</string>
 
 </resources>
