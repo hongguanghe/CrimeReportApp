@@ -32,23 +32,22 @@ public class SearchFragment extends Fragment implements SearchView.OnQueryTextLi
         View view = inflater.inflate(R.layout.fragment_search, container, false);
 
         ImageView myCityImage = view.findViewById(R.id.myCityImage);
+        Button myCityButton = view.findViewById(R.id.myCityButton);
+        Button currentLocationButton = view.findViewById(R.id.currLocationButton);
 
         if (DataCache.get_instance().getMyCitySetAsProvo()) {
             Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.provo);
             RoundedBitmapDrawable img = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
             img.setCornerRadius(150);
-
             myCityImage.setImageDrawable(img);
+            myCityButton.setText(R.string.provo);
         } else {
             Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.blackcolor);
             RoundedBitmapDrawable img = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
             img.setCornerRadius(400);
-
             myCityImage.setImageDrawable(img);
+            myCityButton.setEnabled(false);
         }
-
-        Button myCityButton = view.findViewById(R.id.myCityButton);
-        Button currentLocationButton = view.findViewById(R.id.currLocationButton);
 
         myCityButton.setOnClickListener(v -> {
             CityInfoFragment cif = new CityInfoFragment();

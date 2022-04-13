@@ -26,6 +26,7 @@
     <string name="trend">Trend</string>
     <string name="summary">Summary</string>
     <string name="myCityName">My City</string>
-    <string name="view_current_location">View Current Location</string>
+    <string name="provo">Provo</string>
+    <string name="view_current_location">Current Location</string>
 
 </resources>
