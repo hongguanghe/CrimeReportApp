@@ -30,25 +30,25 @@ public class SearchFragment extends Fragment implements SearchView.OnQueryTextLi
 
 //    private FragmentSearchBinding binding;
 
+    private View view;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_search, container, false);
+        view = inflater.inflate(R.layout.fragment_search, container, false);
 
         ImageView myCityImage = view.findViewById(R.id.myCityImage);
         Button myCityButton = view.findViewById(R.id.myCityButton);
         Button currentLocationButton = view.findViewById(R.id.currLocationButton);
 
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.provo);
+        RoundedBitmapDrawable img = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
+        img.setCornerRadius(150);
+        myCityImage.setImageDrawable(img);
+
         if (DataCache.get_instance().getMyCitySetAsProvo()) {
-            Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.provo);
-            RoundedBitmapDrawable img = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
-            img.setCornerRadius(150);
-            myCityImage.setImageDrawable(img);
             myCityButton.setText(R.string.provo);
+            myCityButton.setEnabled(true);
         } else {
-            Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.blackcolor);
-            RoundedBitmapDrawable img = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
-            img.setCornerRadius(450);
-            myCityImage.setImageDrawable(img);
             myCityButton.setEnabled(false);
         }
 
@@ -86,6 +86,25 @@ public class SearchFragment extends Fragment implements SearchView.OnQueryTextLi
         });*/
 
 //      return root;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ImageView myCityImage = view.findViewById(R.id.myCityImage);
+        Button myCityButton = view.findViewById(R.id.myCityButton);
+
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.provo);
+        RoundedBitmapDrawable img = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
+        img.setCornerRadius(150);
+        myCityImage.setImageDrawable(img);
+
+        if (DataCache.get_instance().getMyCitySetAsProvo()) {
+            myCityButton.setText(R.string.provo);
+            myCityButton.setEnabled(true);
+        } else {
+            myCityButton.setEnabled(false);
+        }
     }
 
     @Override
