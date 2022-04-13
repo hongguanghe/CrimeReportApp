@@ -160,12 +160,6 @@ public static class SelectTimeFragment extends DialogFragment implements TimePic
         @NonNull
         @Override
         public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-            /*Dialog alert = new AlertDialog.Builder(requireContext())
-                    .setMessage("Report Submitted")
-                    .setPositiveButton("Go Back", (dialog, which) -> {} )
-                    .create();
-
-             */
             AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
             builder.setMessage("Report Submitted\nCrime Report will analyze your Report\nwithin 24 hours");
             builder.setCancelable(false);
