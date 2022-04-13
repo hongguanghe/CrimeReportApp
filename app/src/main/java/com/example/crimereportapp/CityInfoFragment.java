@@ -107,21 +107,6 @@ public class CityInfoFragment extends Fragment  {
         }
 
         ImageButton favorite = view.findViewById(R.id.favorite_button);
-        favorite.setOnClickListener(view1 -> {
-            favorite.setSelected(!favorite.isPressed());
-
-            String msg;
-            if (favorite.isPressed()) {
-                favorite.setImageResource(R.drawable.ic_fav_filled);
-                msg = "Set as My City";
-                dataCache.setMyCityAsProvo();
-            }
-            else {
-                favorite.setImageResource(R.drawable.ic_fav);
-                msg = "Removed from My City";
-            }
-            Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
-        });
 
         AnyChartView anyChartView = view.findViewById(R.id.trend_chart);
         APIlib.getInstance().setActiveAnyChartView(anyChartView);
@@ -192,8 +177,6 @@ public class CityInfoFragment extends Fragment  {
             }
         }
 
-
-
         pie.data(summaryData);
 
 
@@ -201,6 +184,26 @@ public class CityInfoFragment extends Fragment  {
         pie.legend().enabled(false);
 
         summaryChart.setChart(pie);
+
+        List<DataEntry> finalData = data;
+        List<DataEntry> finalSummaryData = summaryData;
+        favorite.setOnClickListener(view1 -> {
+            favorite.setSelected(!favorite.isPressed());
+
+            String msg;
+            if (favorite.isPressed()) {
+                favorite.setImageResource(R.drawable.ic_fav_filled);
+                msg = "Set as My City";
+                dataCache.setMyCityAsProvo();
+                dataCache.trendData = finalData;
+                dataCache.summaryData = finalSummaryData;
+            }
+            else {
+                favorite.setImageResource(R.drawable.ic_fav);
+                msg = "Removed from My City";
+            }
+            Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+        });
 
 
         return view;
