@@ -79,7 +79,7 @@ public class ReportFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                DialogFragment newFragment = new DialogFragment();
+                DialogFragment newFragment = new SubmitDialog();
                 newFragment.show(getParentFragmentManager(), "Report Submitted!");
             }
         });
@@ -143,17 +143,15 @@ public static class SelectTimeFragment extends DialogFragment implements TimePic
 
 }
 
-    public class PurchaseConfirmationDialogFragment extends DialogFragment {
+    public class SubmitDialog extends DialogFragment {
         @NonNull
         @Override
         public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
             return new AlertDialog.Builder(requireContext())
-                    .setMessage(getString(R.string.order_confirmation))
-                    .setPositiveButton(getString(R.string.ok), (dialog, which) -> {} )
+                    .setMessage("Report Submitted")
+                    .setPositiveButton("Go Back", (dialog, which) -> {} )
                     .create();
         }
-
-        public static String TAG = "PurchaseConfirmationDialog";
     }
 }
 
