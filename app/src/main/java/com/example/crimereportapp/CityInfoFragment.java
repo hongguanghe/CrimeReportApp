@@ -128,12 +128,23 @@ public class CityInfoFragment extends Fragment  {
 //            }
 //        });
 
+        String[] crimeTypes = new String[] {
+                "Assault",
+                "Burglary",
+                "Larceny",
+                "Homicide",
+                "Rape",
+                "Robbery",
+                "Arson",
+                "Violent",
+                "Theft"
+        };
+
         List<DataEntry> summaryData = new ArrayList<>();
-        summaryData.add(new ValueDataEntry("Apples", 6371664));
-        summaryData.add(new ValueDataEntry("Pears", 789622));
-        summaryData.add(new ValueDataEntry("Bananas", 7216301));
-        summaryData.add(new ValueDataEntry("Grapes", 1486621));
-        summaryData.add(new ValueDataEntry("Oranges", 1200000));
+
+        for (String crimeType : crimeTypes) {
+            summaryData.add(new ValueDataEntry(crimeType, randomCrimeNumberBasedOnType()));
+        }
 
         pie.data(summaryData);
 
@@ -161,5 +172,10 @@ public class CityInfoFragment extends Fragment  {
     private int randomCrimeNumber() {
         return new Random().nextInt(500000 - 100000) + 100000;
     }
+
+    private int randomCrimeNumberBasedOnType() {
+        return new Random().nextInt(100000 - 1000) + 1000;
+    }
+
 
 }
