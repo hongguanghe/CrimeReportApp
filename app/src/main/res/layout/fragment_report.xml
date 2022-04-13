@@ -67,6 +67,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_gravity="center"
+            android:background="@drawable/round_background_map"
+            android:backgroundTint = "@color/score_good_color"
             android:text="Submit"/>
 
 
