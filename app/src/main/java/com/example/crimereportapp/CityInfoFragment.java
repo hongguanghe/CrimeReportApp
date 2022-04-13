@@ -32,6 +32,7 @@ import com.anychart.enums.HoverMode;
 import com.anychart.enums.LegendLayout;
 import com.anychart.enums.Position;
 import com.anychart.enums.TooltipPositionMode;
+import com.example.crimereportapp.data.DataCache;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +66,6 @@ public class CityInfoFragment extends Fragment  {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -74,6 +74,8 @@ public class CityInfoFragment extends Fragment  {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_city_info, container, false);
 
+        DataCache dataCache = DataCache.get_instance();
+        zipcode = dataCache.currentCityZip;
         TextView scoreText = view.findViewById(R.id.score_text);
         ImageView scoreBackground = view.findViewById(R.id.score_background);
 
