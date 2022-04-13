@@ -6,6 +6,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.KeyboardShortcutGroup;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -45,6 +47,9 @@ public class ReportFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_report, container, false);
         TextView dateView = (TextView) view.findViewById(R.id.InputDateofIncident);
+        TextView location = (TextView) view.findViewById(R.id.inputLocation);
+        TextView type = (TextView) view.findViewById(R.id.InputIncident);
+        TextView details = (TextView) view.findViewById(R.id.DetailedInformation);
         dateView.setFocusable(false);      //Disable Your EditText
         dateView.setOnClickListener(new View.OnClickListener() {
 
@@ -81,6 +86,14 @@ public class ReportFragment extends Fragment {
             public void onClick(View v) {
                 DialogFragment newFragment = new SubmitDialog();
                 newFragment.show(getParentFragmentManager(), "Report Submitted!");
+
+                timeView.setText("");
+                dateView.setText("");
+                details.setText("");
+                location.setText("");
+                type.setText("");
+
+
             }
         });
         return view;
@@ -147,10 +160,26 @@ public static class SelectTimeFragment extends DialogFragment implements TimePic
         @NonNull
         @Override
         public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-            return new AlertDialog.Builder(requireContext())
+            /*Dialog alert = new AlertDialog.Builder(requireContext())
                     .setMessage("Report Submitted")
                     .setPositiveButton("Go Back", (dialog, which) -> {} )
                     .create();
+
+             */
+            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+            builder.setMessage("Report Submitted\nCrime Report will analyze your Report\nwithin 24 hours");
+            builder.setCancelable(false);
+            builder.setPositiveButton("Go Back", null);
+            AlertDialog dialog = builder.show();
+            TextView messageView = dialog.findViewById(android.R.id.message);
+            Button buttonView = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT); //create a new one
+            layoutParams.weight = 1.0f ;
+            layoutParams.gravity = Gravity.CENTER; //this is layout_gravity
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setLayoutParams(layoutParams);
+            messageView.setGravity(Gravity.CENTER);
+
+            return dialog;
         }
     }
 }
