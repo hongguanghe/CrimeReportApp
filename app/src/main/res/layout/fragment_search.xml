@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="50dp">
+            android:layout_marginTop="75dp">
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -61,7 +61,7 @@
                     android:id="@+id/myCityButton"
                     android:text="@string/myCityName"
                     android:textColor="@color/white"
-                    android:textSize="50sp"
+                    android:textSize="25sp"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:background="@android:color/transparent"/>
@@ -73,11 +73,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="50dp">
+            android:layout_marginTop="75dp">
 
             <Button
                 android:id="@+id/currLocationButton"
                 android:text="@string/view_current_location"
+                android:textSize="25sp"
                 android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
