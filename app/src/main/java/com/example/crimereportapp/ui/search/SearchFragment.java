@@ -117,7 +117,10 @@ public class SearchFragment extends Fragment implements SearchView.OnQueryTextLi
     public boolean onQueryTextSubmit(String query) {
         DataCache.get_instance().getSearchResults(query);
 
-        Toast.makeText(getActivity(), "" + DataCache.get_instance().currentCityZip, Toast.LENGTH_SHORT).show();
+        Intent cif = new Intent(getActivity(), CityInfoActivity.class);
+        startActivity(cif);
+
+       //Toast.makeText(getActivity(), "" + DataCache.get_instance().currentCityZip, Toast.LENGTH_SHORT).show();
 
         /*if (searchResults.size() > 0) {
             Toast.makeText(getActivity(), searchResults.get(0), Toast.LENGTH_SHORT).show();
