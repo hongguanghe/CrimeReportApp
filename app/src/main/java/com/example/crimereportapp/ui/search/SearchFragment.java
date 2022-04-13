@@ -50,6 +50,7 @@ public class SearchFragment extends Fragment implements SearchView.OnQueryTextLi
         }
 
         myCityButton.setOnClickListener(v -> {
+            DataCache.get_instance().getSearchResults("Provo");
             CityInfoFragment cif = new CityInfoFragment();
             //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_activity_main, cif).commit();
             FragmentManager fm = getFragmentManager();
@@ -57,6 +58,7 @@ public class SearchFragment extends Fragment implements SearchView.OnQueryTextLi
         });
 
         currentLocationButton.setOnClickListener(v -> {
+            DataCache.get_instance().getSearchResults("Provo");
             CityInfoFragment cif = new CityInfoFragment();
             FragmentManager fm = getFragmentManager();
             fm.beginTransaction().replace(R.id.nav_host_fragment_activity_main, cif).commit();
