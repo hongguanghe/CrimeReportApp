@@ -3,98 +3,71 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="30dp"
+    android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/textInputLayout"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/title_color"
+        android:text="Report"
+        android:textSize="48sp"/>
+    
+    <TextView
+        android:id="@+id/textView3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="1"
+        android:text="If this is an emergency or crime in progress,\n close the app and Dial 911 right now"
+        android:textAlignment="center"
+        android:textColor="#FF0000"
+        android:gravity="center"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputLocation"
-            android:layout_width="226dp"
-            android:layout_height="56dp"
-            android:layout_marginTop="185dp"
-            android:hint="Enter Location of Incident"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Location of Incident"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/InputIncident"
-            android:layout_width="226dp"
-            android:layout_height="56dp"
-            android:hint="Type of Incident"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputLocation" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type of Incident"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/InputDateofIncident"
-            android:layout_width="226dp"
-            android:layout_height="56dp"
-            android:hint="Date of Incident"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/InputIncident" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Date of Incident"/>
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/InputTimeofIncident"
-            android:layout_width="226dp"
-            android:layout_height="56dp"
-            android:hint="Time incident occured"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/InputDateofIncident" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Time incident occured"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/DetailedInformation"
-            android:layout_width="232dp"
-            android:layout_height="148dp"
-            android:hint="Enter Detail Information (Optional)"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/InputTimeofIncident" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:text="Report"
-            android:textSize="48sp"
-            app:layout_constraintBottom_toTopOf="@+id/inputLocation"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            android:hint="Enter Detail Information (Optional)"/>
+
+
 
         <Button
             android:id="@+id/submitButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="Submit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DetailedInformation" />
+            android:layout_gravity="center"
+            android:text="Submit"/>
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:shadowDx="2"
-            android:shadowDy="2"
-            android:shadowRadius="1"
-            android:text="If this is an emergency or crime in progress,\n close the app and Dial 911 right now"
-            android:textAlignment="center"
-            android:textColor="#FF0000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </LinearLayout>
