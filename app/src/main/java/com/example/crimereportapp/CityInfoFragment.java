@@ -87,11 +87,8 @@ public class CityInfoFragment extends Fragment  {
         cityName.setText(currentCityName);
         int score = randomCrimeScore();
 
-        if (currentCityName.equals("Provo") && dataCache.provoScore == 0) {
-            dataCache.provoScore = score;
-        }
-        else if (currentCityName.equals("Provo")) {
-            score = dataCache.provoScore;
+        if (currentCityName.equals("Provo")) {
+            score = 81;
         }
 
         scoreText.setText(String.valueOf(score));
