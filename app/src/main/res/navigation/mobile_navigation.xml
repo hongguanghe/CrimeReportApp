@@ -9,17 +9,53 @@
         android:id="@+id/navigation_search"
         android:name="com.example.crimereportapp.ui.search.SearchFragment"
         android:label="@string/search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_navigation_search_to_cityInfoFragment"
+            app:destination="@id/cityInfoFragment" />
+        <action
+            android:id="@+id/action_navigation_search_to_navigation_report"
+            app:destination="@id/navigation_report" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_explore"
         android:name="com.example.crimereportapp.ui.explore.ExploreFragment"
         android:label="@string/explore"
-        tools:layout="@layout/fragment_explore" />
+        tools:layout="@layout/fragment_explore" >
+        <action
+            android:id="@+id/action_navigation_explore_to_cityInfoFragment"
+            app:destination="@id/cityInfoFragment" />
+        <action
+            android:id="@+id/action_navigation_explore_to_navigation_report"
+            app:destination="@id/navigation_report" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_report"
         android:name="com.example.crimereportapp.ui.report.ReportFragment"
         android:label="@string/report"
-        tools:layout="@layout/fragment_report" />
+        tools:layout="@layout/fragment_report" >
+        <action
+            android:id="@+id/action_navigation_report_to_navigation_search"
+            app:destination="@id/navigation_search" />
+        <action
+            android:id="@+id/action_navigation_report_to_navigation_explore"
+            app:destination="@id/navigation_explore" />
+    </fragment>
+    <fragment
+        android:id="@+id/cityInfoFragment"
+        android:name="com.example.crimereportapp.CityInfoFragment"
+        android:label="fragment_city_info"
+        tools:layout="@layout/fragment_city_info" >
+        <action
+            android:id="@+id/action_cityInfoFragment_to_navigation_search"
+            app:destination="@id/navigation_search" />
+        <action
+            android:id="@+id/action_cityInfoFragment_to_navigation_explore"
+            app:destination="@id/navigation_explore" />
+        <action
+            android:id="@+id/action_cityInfoFragment_to_navigation_report"
+            app:destination="@id/navigation_report" />
+    </fragment>
 </navigation>

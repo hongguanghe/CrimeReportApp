@@ -44,7 +44,7 @@ public class SearchFragment extends Fragment implements SearchView.OnQueryTextLi
         } else {
             Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.blackcolor);
             RoundedBitmapDrawable img = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
-            img.setCornerRadius(400);
+            img.setCornerRadius(450);
             myCityImage.setImageDrawable(img);
             myCityButton.setEnabled(false);
         }

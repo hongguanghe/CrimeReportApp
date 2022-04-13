@@ -2,6 +2,7 @@ package com.example.crimereportapp;
 
 import android.os.Bundle;
 
+import com.example.crimereportapp.ui.search.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
