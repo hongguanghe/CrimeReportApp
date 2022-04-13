@@ -20,7 +20,8 @@ public class DataCache {
 
     private boolean myCitySetAsProvo = false;
 
-    public String currentCityName = null;
+    public int provoScore = 0;
+    public String currentCityName = "";
     public int currentCityZip = -1;
 
     public List<DataEntry> summaryData = new ArrayList<>();

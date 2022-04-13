@@ -81,9 +81,19 @@ public class CityInfoFragment extends Fragment  {
         TextView scoreText = view.findViewById(R.id.score_text);
         ImageView scoreBackground = view.findViewById(R.id.score_background);
         TextView cityName = view.findViewById(R.id.cityNameText);
+
         String currentCityName = dataCache.getCurrentCityName();
+
         cityName.setText(currentCityName);
         int score = randomCrimeScore();
+
+        if (currentCityName.equals("Provo") && dataCache.provoScore == 0) {
+            dataCache.provoScore = score;
+        }
+        else if (currentCityName.equals("Provo")) {
+            score = dataCache.provoScore;
+        }
+
         scoreText.setText(String.valueOf(score));
 
         if (score >= 80) {
@@ -152,8 +162,6 @@ public class CityInfoFragment extends Fragment  {
         cartesian.interactivity().hoverMode(HoverMode.BY_X);
 
         anyChartView.setChart(cartesian);
-
-
 
         AnyChartView summaryChart = view.findViewById(R.id.summary_chart);
         anyChartView.setProgressBar(view.findViewById(R.id.summary_progress_bar));
