@@ -31,6 +31,20 @@
                     android:textColor="@color/title_color"
                     android:textSize="48sp" />
 
+                <TextView
+                    android:id="@+id/placeholder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:id="@+id/favorite_button"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="right|center_horizontal|end"
+                    android:background="@color/white"
+                    android:src="@drawable/ic_fav" />
+
             </LinearLayout>
 
 

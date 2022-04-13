@@ -12,9 +12,11 @@ import androidx.fragment.app.FragmentContainerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.anychart.APIlib;
 import com.anychart.AnyChart;
@@ -92,6 +94,21 @@ public class CityInfoFragment extends Fragment  {
             scoreBackground.setImageResource(R.drawable.score_circle_dangerous);
         }
 
+        ImageButton favorite = view.findViewById(R.id.favorite_button);
+        favorite.setOnClickListener(view1 -> {
+            favorite.setSelected(!favorite.isPressed());
+
+            String msg;
+            if (favorite.isPressed()) {
+                favorite.setImageResource(R.drawable.ic_fav_filled);
+                msg = "Set as My City";
+            }
+            else {
+                favorite.setImageResource(R.drawable.ic_fav);
+                msg = "Removed from My City";
+            }
+            Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+        });
 
         AnyChartView anyChartView = view.findViewById(R.id.trend_chart);
         APIlib.getInstance().setActiveAnyChartView(anyChartView);
@@ -197,7 +214,7 @@ public class CityInfoFragment extends Fragment  {
     }
 
     private int randomCrimeScore() {
-        return new Random().nextInt(100 - 5) + 5;
+        return new Random().nextInt(100 - 50) + 50;
     }
 
 
