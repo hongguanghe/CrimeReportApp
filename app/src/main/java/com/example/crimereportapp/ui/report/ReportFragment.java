@@ -1,6 +1,7 @@
 package com.example.crimereportapp.ui.report;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
@@ -51,7 +52,7 @@ public class ReportFragment extends Fragment {
             public void onClick(View arg0) {
 
                 DialogFragment newFragment = new SelectDateFragment();
-                newFragment.show(getParentFragmentManager(), "DatePicker");
+                newFragment.show(getParentFragmentManager(), "Set Date");
 
             }
 
@@ -65,7 +66,7 @@ public class ReportFragment extends Fragment {
             public void onClick(View arg0) {
 
                 DialogFragment newFragment = new SelectTimeFragment();
-                newFragment.show(getParentFragmentManager(), "TimePicker");
+                newFragment.show(getParentFragmentManager(), "Set Time");
 
             }
 
@@ -78,11 +79,8 @@ public class ReportFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Fragment fragment= new SubmittedReport();
-                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-                transaction.replace(R.id.nav_host_fragment_activity_main, fragment); // fragmen container id in first parameter is the  container(Main layout id) of Activity
-                transaction.addToBackStack(null);  // this will manage backstack
-                transaction.commit();
+                DialogFragment newFragment = new DialogFragment();
+                newFragment.show(getParentFragmentManager(), "Report Submitted!");
             }
         });
         return view;
@@ -144,5 +142,18 @@ public static class SelectTimeFragment extends DialogFragment implements TimePic
     }
 
 }
+
+    public class PurchaseConfirmationDialogFragment extends DialogFragment {
+        @NonNull
+        @Override
+        public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+            return new AlertDialog.Builder(requireContext())
+                    .setMessage(getString(R.string.order_confirmation))
+                    .setPositiveButton(getString(R.string.ok), (dialog, which) -> {} )
+                    .create();
+        }
+
+        public static String TAG = "PurchaseConfirmationDialog";
+    }
 }
 
