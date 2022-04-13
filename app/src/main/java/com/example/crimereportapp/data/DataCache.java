@@ -103,10 +103,8 @@ public class DataCache {
                 resultZips.add(zipCodes[i]);
                 resultNames.add(cities[i]);
         }
-        if (resultZips.size() == 1) {
-            currentCityZip = resultZips.get(0);
-            currentCityName = resultNames.get(0);
-        }
+        currentCityZip = resultZips.get(0);
+        currentCityName = resultNames.get(0);
     }
 
     public void setMyCityAsProvo() {
