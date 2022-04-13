@@ -73,8 +73,18 @@ public class ReportFragment extends Fragment {
         });
 
 
-        //Button submit =
+        Button submit = (Button) view.findViewById(R.id.submitButton);
+        submit.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                Fragment fragment= new SubmittedReport();
+                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+                transaction.replace(R.id.nav_host_fragment_activity_main, fragment); // fragmen container id in first parameter is the  container(Main layout id) of Activity
+                transaction.addToBackStack(null);  // this will manage backstack
+                transaction.commit();
+            }
+        });
         return view;
     }
     public static class SelectDateFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
