@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.crimereportapp.CityInfoFragment;
 import com.example.crimereportapp.R;
+import com.example.crimereportapp.data.DataCache;
 import com.example.crimereportapp.databinding.FragmentExploreBinding;
 
 public class ExploreFragment extends Fragment {
@@ -54,6 +55,7 @@ public class ExploreFragment extends Fragment {
 
         Button saltLakeButton = view.findViewById(R.id.saltLakeButton);
         saltLakeButton.setOnClickListener(v -> {
+            DataCache.get_instance().currentCityZip = 84150;
             CityInfoFragment cif = new CityInfoFragment();
             FragmentManager fm = getFragmentManager();
             fm.beginTransaction().replace(R.id.nav_host_fragment_activity_main, cif).commit();
@@ -61,6 +63,7 @@ public class ExploreFragment extends Fragment {
 
         Button newYorkButton = view.findViewById(R.id.newYorkButton);
         newYorkButton.setOnClickListener(v -> {
+            DataCache.get_instance().currentCityZip = 10001;
             CityInfoFragment cif = new CityInfoFragment();
             FragmentManager fm = getFragmentManager();
             fm.beginTransaction().replace(R.id.nav_host_fragment_activity_main, cif).commit();
@@ -68,6 +71,7 @@ public class ExploreFragment extends Fragment {
 
         Button sanFranButton = view.findViewById(R.id.sanFranButton);
         sanFranButton.setOnClickListener(v -> {
+            DataCache.get_instance().currentCityZip = 94117;
             CityInfoFragment cif = new CityInfoFragment();
             FragmentManager fm = getFragmentManager();
             fm.beginTransaction().replace(R.id.nav_host_fragment_activity_main, cif).commit();
@@ -75,6 +79,7 @@ public class ExploreFragment extends Fragment {
 
         Button chicagoButton = view.findViewById(R.id.chicagoButton);
         chicagoButton.setOnClickListener(v -> {
+            DataCache.get_instance().currentCityZip = 60602;
             CityInfoFragment cif = new CityInfoFragment();
             FragmentManager fm = getFragmentManager();
             fm.beginTransaction().replace(R.id.nav_host_fragment_activity_main, cif).commit();

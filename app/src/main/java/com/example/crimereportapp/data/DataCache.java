@@ -16,10 +16,9 @@ public class DataCache {
 
     private allyearlyData allyearlyData = new allyearlyData();
 
-    private String currentCityName = "";
-
     private boolean myCitySetAsProvo = false;
 
+    public String currentCityName = null;
     public int currentCityZip = -1;
 
     private String[] cities = {"Salt Lake City",
@@ -90,13 +89,16 @@ public class DataCache {
     }
 
     public void getSearchResults(String search) {
-        List<Integer> resultCities = new ArrayList<>();
+        List<Integer> resultZips = new ArrayList<>();
+        List<String> resultNames = new ArrayList<>();
         for(int i = 0; i < cities.length; i++) {
             if(cities[i].trim().toLowerCase(Locale.ROOT).contains(search))
-                resultCities.add(zipCodes[i]);
+                resultZips.add(zipCodes[i]);
+                resultNames.add(cities[i]);
         }
-        if (resultCities.size() == 1) {
-            currentCityZip = resultCities.get(0);
+        if (resultZips.size() == 1) {
+            currentCityZip = resultZips.get(0);
+            currentCityName = resultNames.get(0);
         }
     }
 
