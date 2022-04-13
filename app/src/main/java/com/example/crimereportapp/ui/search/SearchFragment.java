@@ -44,6 +44,7 @@ public class SearchFragment extends Fragment implements SearchView.OnQueryTextLi
 
         myCityButton.setOnClickListener(v -> {
             CityInfoFragment cif = new CityInfoFragment();
+            //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_activity_main, cif).commit();
             FragmentManager fm = getFragmentManager();
             fm.beginTransaction().replace(R.id.nav_host_fragment_activity_main, cif).commit();
         });

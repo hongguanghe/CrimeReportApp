@@ -2,8 +2,10 @@ package com.example.crimereportapp.data;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class DataCache {
 
@@ -66,6 +68,10 @@ public class DataCache {
             "Bountiful",
             "Riverton",
             "Roy"};
+
+    Map<String, Integer> cityZipCodeMap = new HashMap<>();
+
+    cityZipCodeMap = {}
 
     private List<String> cityList = new ArrayList<>(Arrays.asList(cities));
 
