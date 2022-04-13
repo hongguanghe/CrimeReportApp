@@ -143,7 +143,7 @@ public static class SelectTimeFragment extends DialogFragment implements TimePic
 
 }
 
-    public class SubmitDialog extends DialogFragment {
+    public static class SubmitDialog extends DialogFragment {
         @NonNull
         @Override
         public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
