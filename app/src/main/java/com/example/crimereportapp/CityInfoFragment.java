@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentContainerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -73,8 +74,24 @@ public class CityInfoFragment extends Fragment  {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_city_info, container, false);
 
+        TextView scoreText = view.findViewById(R.id.score_text);
+        ImageView scoreBackground = view.findViewById(R.id.score_background);
+
+        int score = randomCrimeScore();
+        scoreText.setText(String.valueOf(score));
+
+        if (score >= 80) {
+            scoreBackground.setImageResource(R.drawable.score_circle);
+        }
+        else if (score >= 60) {
+            scoreBackground.setImageResource(R.drawable.score_circle_risky);
+        }
+        else {
+            scoreBackground.setImageResource(R.drawable.score_circle_dangerous);
+        }
+
+
         AnyChartView anyChartView = view.findViewById(R.id.trend_chart);
-//        anyChartView.setProgressBar(view.findViewById(R.id.trend_progress_bar));
         APIlib.getInstance().setActiveAnyChartView(anyChartView);
 
         cornerLayout = view.findViewById(R.id.fragmentContainerView);
@@ -175,6 +192,10 @@ public class CityInfoFragment extends Fragment  {
 
     private int randomCrimeNumberBasedOnType() {
         return new Random().nextInt(100000 - 1000) + 1000;
+    }
+
+    private int randomCrimeScore() {
+        return new Random().nextInt(100 - 5) + 5;
     }
 
 

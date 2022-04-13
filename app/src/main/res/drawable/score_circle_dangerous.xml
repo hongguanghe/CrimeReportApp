@@ -15,7 +15,7 @@
 
     <!--If your shape requires only one solid color-->
     <solid
-        android:color= "@color/score_good_color" />
+        android:color= "@color/score_dangerous_color" />
 
     <size
         android:width="200dp"
