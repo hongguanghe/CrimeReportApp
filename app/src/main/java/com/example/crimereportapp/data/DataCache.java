@@ -99,9 +99,10 @@ public class DataCache {
         List<Integer> resultZips = new ArrayList<>();
         List<String> resultNames = new ArrayList<>();
         for(int i = 0; i < cities.length; i++) {
-            if(cities[i].trim().toLowerCase(Locale.ROOT).contains(search))
+            if(cities[i].toLowerCase(Locale.ROOT).contains(search.toLowerCase(Locale.ROOT))) {
                 resultZips.add(zipCodes[i]);
                 resultNames.add(cities[i]);
+            }
         }
         currentCityZip = resultZips.get(0);
         currentCityName = resultNames.get(0);
