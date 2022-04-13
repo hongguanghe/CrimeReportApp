@@ -10,15 +10,38 @@ import java.util.Map;
 public class DataCache {
 
     private static DataCache _instance = new DataCache();
-    public static DataCache getInstance() {
-        return _instance;
-    }
-
 
     private final String API_KEY = "kKwI7EbdXw219bH0Aqja5unjaxjYzhhndxBlxnnx";
     private String cityORI = "UT0250600"; //currently provoURI
 
     private allyearlyData allyearlyData = new allyearlyData();
+
+    private String currentCityName = "";
+
+    private String[] cities = {"Salt Lake City",
+            "West Valley City",
+            "Provo",
+            "West Jordan",
+            "Orem",
+            "Sandy",
+            "Ogden",
+            "St. George",
+            "Layton",
+            "Taylorsville",
+            "South Jordan",
+            "Lehi",
+            "Logan",
+            "Murray",
+            "Draper",
+            "Bountiful",
+            "Riverton",
+            "Roy"};
+
+    private int[] zipCodes = {84150,
+            84120,
+            84606
+
+    };
 
     public static DataCache get_instance() {
         return _instance;
@@ -47,33 +70,6 @@ public class DataCache {
     public void setAllyearlyData(com.example.crimereportapp.data.allyearlyData allyearlyData) {
         this.allyearlyData = allyearlyData;
     }
-
-    private String currentCityName = "";
-
-    String[] cities = {"Salt Lake City",
-            "West Valley City",
-            "Provo",
-            "West Jordan",
-            "Orem",
-            "Sandy",
-            "Ogden",
-            "St. George",
-            "Layton",
-            "Taylorsville",
-            "South Jordan",
-            "Lehi",
-            "Logan",
-            "Murray",
-            "Draper",
-            "Bountiful",
-            "Riverton",
-            "Roy"};
-
-    Map<String, Integer> cityZipCodeMap = new HashMap<>();
-
-    cityZipCodeMap = {}
-
-    private List<String> cityList = new ArrayList<>(Arrays.asList(cities));
 
     public List<String> getSearchResults(String search) {
         List<String> resultCities = new ArrayList<>();
