@@ -102,6 +102,7 @@ public class CityInfoFragment extends Fragment  {
             if (favorite.isPressed()) {
                 favorite.setImageResource(R.drawable.ic_fav_filled);
                 msg = "Set as My City";
+                DataCache.get_instance().setMyCityAsProvo();
             }
             else {
                 favorite.setImageResource(R.drawable.ic_fav);
