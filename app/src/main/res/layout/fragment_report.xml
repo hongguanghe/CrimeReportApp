@@ -15,7 +15,7 @@
         android:textColor="@color/title_color"
         android:text="Report"
         android:textSize="48sp"/>
-    
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
