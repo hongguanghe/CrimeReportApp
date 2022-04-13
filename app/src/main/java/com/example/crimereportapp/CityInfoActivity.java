@@ -24,19 +24,12 @@ public class CityInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_info);
 
-//        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-//                R.id.navigation_search, R.id.navigation_explore, R.id.navigation_report)
-//                .build();
-//
-//        NavController navController = Navigation.findNavController(this, R.id.cityInfoFragmentContainer);
-//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-//        NavigationUI.setupWithNavController(binding.bottomNavigatinView, navController);
-
-
         // Get a support ActionBar corresponding to this toolbar
         ActionBar ab = getSupportActionBar();
 
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
+
+        ab.setTitle("City Info");
     }
 }

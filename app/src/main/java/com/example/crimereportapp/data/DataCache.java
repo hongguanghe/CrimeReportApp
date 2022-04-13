@@ -1,5 +1,7 @@
 package com.example.crimereportapp.data;
 
+import com.anychart.chart.common.dataentry.DataEntry;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -20,6 +22,10 @@ public class DataCache {
 
     public String currentCityName = null;
     public int currentCityZip = -1;
+
+    public List<DataEntry> summaryData = new ArrayList<>();
+    public List<DataEntry> trendData = new ArrayList<>();
+
 
     private String[] cities = {"Salt Lake City",
             "West Valley City",

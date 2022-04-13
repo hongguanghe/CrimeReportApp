@@ -16,6 +16,7 @@
         android:theme="@style/Theme.CrimeReportApp">
         <activity
             android:name=".CityInfoActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.

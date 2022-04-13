@@ -80,7 +80,9 @@ public class CityInfoFragment extends Fragment  {
         zipcode = dataCache.currentCityZip;
         TextView scoreText = view.findViewById(R.id.score_text);
         ImageView scoreBackground = view.findViewById(R.id.score_background);
-
+        TextView cityName = view.findViewById(R.id.cityNameText);
+        String currentCityName = dataCache.getCurrentCityName();
+        cityName.setText(currentCityName);
         int score = randomCrimeScore();
         scoreText.setText(String.valueOf(score));
 
@@ -102,6 +104,7 @@ public class CityInfoFragment extends Fragment  {
             if (favorite.isPressed()) {
                 favorite.setImageResource(R.drawable.ic_fav_filled);
                 msg = "Set as My City";
+                dataCache.setMyCityAsProvo();
             }
             else {
                 favorite.setImageResource(R.drawable.ic_fav);
@@ -119,8 +122,14 @@ public class CityInfoFragment extends Fragment  {
         Cartesian cartesian = AnyChart.column();
 
         List<DataEntry> data = new ArrayList<>();
-        for (int i = 12; i < 22; i++) {
-            data.add(new ValueDataEntry(i, randomCrimeNumber()));
+
+        if (dataCache.getMyCitySetAsProvo() && currentCityName.equals("Provo")) {
+            data = dataCache.trendData;
+        }
+        else {
+            for (int i = 12; i < 22; i++) {
+                data.add(new ValueDataEntry(i, randomCrimeNumber()));
+            }
         }
 
         Column column = cartesian.column(data);
@@ -134,18 +143,13 @@ public class CityInfoFragment extends Fragment  {
                 .format("{%Value}{groupsSeparator: ,}");
 
         cartesian.animation(true);
-//        cartesian.title("Top 10 Cosmetic Products by Revenue");
 
         cartesian.yScale().minimum(0d);
 
 
-//        cartesian.yAxis(0).labels().format("{%Value / 100}{groupsSeparator: }");
         cartesian.yAxis(false);
         cartesian.tooltip().positionMode(TooltipPositionMode.POINT);
         cartesian.interactivity().hoverMode(HoverMode.BY_X);
-
-//        cartesian.xAxis(0).title("Product");
-//        cartesian.yAxis(0).title("Revenue");
 
         anyChartView.setChart(cartesian);
 
@@ -156,13 +160,6 @@ public class CityInfoFragment extends Fragment  {
         APIlib.getInstance().setActiveAnyChartView(summaryChart);
 
         Pie pie = AnyChart.pie();
-
-//        pie.setOnClickListener(new ListenersInterface.OnClickListener(new String[]{"x", "value"}) {
-//            @Override
-//            public void onClick(Event event) {
-//                Toast.makeText(PieChartActivity.this, event.getData().get("x") + ":" + event.getData().get("value"), Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
         String[] crimeTypes = new String[] {
                 "Assault",
@@ -178,26 +175,22 @@ public class CityInfoFragment extends Fragment  {
 
         List<DataEntry> summaryData = new ArrayList<>();
 
-        for (String crimeType : crimeTypes) {
-            summaryData.add(new ValueDataEntry(crimeType, randomCrimeNumberBasedOnType()));
+        if (dataCache.getMyCitySetAsProvo() && currentCityName.equals("Provo")) {
+            summaryData = dataCache.summaryData;
         }
+        else {
+            for (String crimeType : crimeTypes) {
+                summaryData.add(new ValueDataEntry(crimeType, randomCrimeNumberBasedOnType()));
+            }
+        }
+
+
 
         pie.data(summaryData);
 
-//        pie.title("Fruits imported in 2015 (in kg)");
 
         pie.labels().position("inside");
         pie.legend().enabled(false);
-
-//        pie.legend().title().enabled(true);
-//        pie.legend().title()
-//                .text("Retail channels")
-//                .padding(0d, 0d, 10d, 0d);
-
-//        pie.legend()
-//                .position("center-bottom")
-//                .itemsLayout(LegendLayout.HORIZONTAL)
-//                .align(Align.CENTER);
 
         summaryChart.setChart(pie);
 
