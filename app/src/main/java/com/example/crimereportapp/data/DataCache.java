@@ -39,8 +39,22 @@ public class DataCache {
 
     private int[] zipCodes = {84150,
             84120,
-            84606
-
+            84606,
+            84088,
+            84057,
+            84094,
+            84401,
+            84770,
+            84041,
+            84118,
+            84095,
+            84043,
+            84321,
+            84107,
+            84020,
+            84010,
+            84065,
+            84067
     };
 
     public static DataCache get_instance() {
@@ -71,13 +85,17 @@ public class DataCache {
         this.allyearlyData = allyearlyData;
     }
 
-    public List<String> getSearchResults(String search) {
-        List<String> resultCities = new ArrayList<>();
-        for(String str: cityList) {
-            if(str.trim().toLowerCase(Locale.ROOT).contains(search))
-                resultCities.add(str);
+    public int getSearchResults(String search) {
+        List<Integer> resultCities = new ArrayList<>();
+        for(int i = 0; i < cities.length; i++) {
+            if(cities[i].trim().toLowerCase(Locale.ROOT).contains(search))
+                resultCities.add(zipCodes[i]);
         }
-        return resultCities;
+        if (resultCities.size() == 1) {
+            return resultCities.get(0);
+        } else {
+            return -1;
+        }
     }
 
     public String getCurrentCityName() {

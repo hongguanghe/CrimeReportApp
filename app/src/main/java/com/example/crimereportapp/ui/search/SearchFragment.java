@@ -82,12 +82,14 @@ public class SearchFragment extends Fragment implements SearchView.OnQueryTextLi
 
     @Override
     public boolean onQueryTextSubmit(String query) {
-        List<String> searchResults = DataCache.get_instance().getSearchResults(query);
+        int zipcode = DataCache.get_instance().getSearchResults(query);
 
-        if (searchResults.size() > 0) {
+        Toast.makeText(getActivity(), "" + zipcode, Toast.LENGTH_SHORT).show();
+
+        /*if (searchResults.size() > 0) {
             Toast.makeText(getActivity(), searchResults.get(0), Toast.LENGTH_SHORT).show();
             DataCache.get_instance().setCurrentCityName(searchResults.get(0));
-        }
+        }*/
 
         return false;
     }
