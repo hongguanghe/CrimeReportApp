@@ -1,5 +1,6 @@
 package com.example.crimereportapp.ui.search;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.crimereportapp.CityInfoActivity;
+import com.example.crimereportapp.MainActivity;
 import com.example.crimereportapp.data.DataCache;
 import com.example.crimereportapp.CityInfoFragment;
 import com.example.crimereportapp.R;
@@ -59,9 +62,11 @@ public class SearchFragment extends Fragment implements SearchView.OnQueryTextLi
 
         currentLocationButton.setOnClickListener(v -> {
             DataCache.get_instance().getSearchResults("Provo");
-            CityInfoFragment cif = new CityInfoFragment();
-            FragmentManager fm = getFragmentManager();
-            fm.beginTransaction().replace(R.id.nav_host_fragment_activity_main, cif).commit();
+//            CityInfoFragment cif = new CityInfoFragment();
+//            FragmentManager fm = getFragmentManager();
+//            fm.beginTransaction().replace(R.id.nav_host_fragment_activity_main, cif).commit();
+            Intent cif = new Intent(getActivity(), CityInfoActivity.class);
+            startActivity(cif);
         });
 
         SearchView searchView = view.findViewById(R.id.searchView);
