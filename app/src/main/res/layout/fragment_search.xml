@@ -75,23 +75,31 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="75dp">
+
+            <ImageView
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:id="@+id/currentLocationImage"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+            </ImageView>
 
             <Button
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:id="@+id/currLocationButton"
                 android:text="@string/view_current_location"
-                android:textSize="25sp"
                 android:textColor="@color/white"
+                android:textSize="25sp"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="@drawable/round_background_map"/>
-        </LinearLayout>
+                android:background="@android:color/transparent"/>
+        </FrameLayout>
 
     </LinearLayout>
 </LinearLayout>
