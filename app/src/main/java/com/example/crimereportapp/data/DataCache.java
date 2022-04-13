@@ -18,6 +18,10 @@ public class DataCache {
 
     private String currentCityName = "";
 
+    private boolean myCitySetAsProvo = false;
+
+    public int currentCityZip = -1;
+
     private String[] cities = {"Salt Lake City",
             "West Valley City",
             "Provo",
@@ -85,17 +89,23 @@ public class DataCache {
         this.allyearlyData = allyearlyData;
     }
 
-    public int getSearchResults(String search) {
+    public void getSearchResults(String search) {
         List<Integer> resultCities = new ArrayList<>();
         for(int i = 0; i < cities.length; i++) {
             if(cities[i].trim().toLowerCase(Locale.ROOT).contains(search))
                 resultCities.add(zipCodes[i]);
         }
         if (resultCities.size() == 1) {
-            return resultCities.get(0);
-        } else {
-            return -1;
+            currentCityZip = resultCities.get(0);
         }
+    }
+
+    public void setMyCityAsProvo() {
+        myCitySetAsProvo = true;
+    }
+
+    public boolean getMyCitySetAsProvo() {
+        return myCitySetAsProvo;
     }
 
     public String getCurrentCityName() {

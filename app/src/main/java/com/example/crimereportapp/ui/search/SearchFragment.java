@@ -33,11 +33,19 @@ public class SearchFragment extends Fragment implements SearchView.OnQueryTextLi
 
         ImageView myCityImage = view.findViewById(R.id.myCityImage);
 
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.provo);
-        RoundedBitmapDrawable img = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
-        img.setCornerRadius(150);
+        if (DataCache.get_instance().getMyCitySetAsProvo()) {
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.provo);
+            RoundedBitmapDrawable img = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
+            img.setCornerRadius(150);
 
-        myCityImage.setImageDrawable(img);
+            myCityImage.setImageDrawable(img);
+        } else {
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.blackcolor);
+            RoundedBitmapDrawable img = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
+            img.setCornerRadius(400);
+
+            myCityImage.setImageDrawable(img);
+        }
 
         Button myCityButton = view.findViewById(R.id.myCityButton);
         Button currentLocationButton = view.findViewById(R.id.currLocationButton);
@@ -77,14 +85,14 @@ public class SearchFragment extends Fragment implements SearchView.OnQueryTextLi
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-//        binding = null;
+    //  binding = null;
     }
 
     @Override
     public boolean onQueryTextSubmit(String query) {
-        int zipcode = DataCache.get_instance().getSearchResults(query);
+        DataCache.get_instance().getSearchResults(query);
 
-        Toast.makeText(getActivity(), "" + zipcode, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "" + DataCache.get_instance().currentCityZip, Toast.LENGTH_SHORT).show();
 
         /*if (searchResults.size() > 0) {
             Toast.makeText(getActivity(), searchResults.get(0), Toast.LENGTH_SHORT).show();
