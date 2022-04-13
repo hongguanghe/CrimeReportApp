@@ -117,6 +117,7 @@ public class CityInfoFragment extends Fragment  {
 
         if (dataCache.getMyCitySetAsProvo() && currentCityName.equals("Provo")) {
             data = dataCache.trendData;
+            favorite.setImageResource(R.drawable.ic_fav_filled);
         }
         else {
             for (int i = 12; i < 22; i++) {
